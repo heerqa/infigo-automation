@@ -1,0 +1,1001 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.infigo.automation</groupId>
+    <artifactId>automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    
+    						       <properties>
+    
+    	
+		<!-- Generic properties -->
+		<java.version>1.6</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		
+
+		<!-- Spring -->
+		<spring-framework.version>4.1.2.RELEASE</spring-framework.version>
+
+		<!-- Hibernate / JPA -->
+		<hibernate.version>4.2.1.Final</hibernate.version>
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		
+	</properties>
+    <dependencies>
+						   <dependency>
+						            <groupId>org.seleniumhq.selenium</groupId>
+						            <artifactId>selenium-java</artifactId>
+						            <!--version>2.37.1</version--> <!-- SHAGUFTA's version-->
+						            <!--version>2.39.0</version--> <!-- LATEST selenium version -->
+						            <version>2.43.1</version>
+						            <!-- Version that GHOSTDRIVER was compatible with was 2.34.0 now with 1.1.0 its 2.39.0 -->
+						        </dependency>
+						        <dependency>
+       								 <groupId>org.seleniumhq.selenium</groupId>
+        							 <artifactId>selenium-firefox-driver</artifactId>
+        							 <version>2.43.1</version>
+  								</dependency>  
+						        <dependency>
+						            <groupId>junit</groupId>
+						            <artifactId>junit</artifactId>
+						            <version>4.11</version>
+						            <!-- SHAGUFTA's version-->
+						            <!--<version>4.11</version>--> <!-- LATEST junit version -->
+						        </dependency>
+						        <dependency>
+						            <groupId>org.apache.poi</groupId>
+						            <artifactId>poi</artifactId>
+						            <version>3.9</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>xml-apis</groupId>
+						            <artifactId>xml-apis</artifactId>
+						            <version>1.4.01</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>dom4j</groupId>
+						            <artifactId>dom4j</artifactId>
+						            <version>1.6.1</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>org.apache.poi</groupId>
+						            <artifactId>poi-ooxml-schemas</artifactId>
+						            <version>3.9</version>
+						            <exclusions>
+						                <exclusion>
+						                    <artifactId>xml-apis</artifactId>
+						                    <groupId>xml-apis</groupId>
+						                </exclusion>
+						            </exclusions>
+						        </dependency>
+						        <dependency>
+						            <groupId>org.apache.poi</groupId>
+						            <artifactId>poi-ooxml</artifactId>
+						            <version>3.9</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>org.apache.poi</groupId>
+						            <artifactId>ooxml-schemas</artifactId>
+						            <version>1.0</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>com.github.detro.ghostdriver</groupId>
+						            <artifactId>phantomjsdriver</artifactId>
+						            <version>1.1.0</version>
+						            <!-- Latests version that supports latest GhostDriver -->
+						            <!--<version>1.0.4</version>--> <!-- old phantomjsdriver version -->
+						        </dependency>
+						        <dependency>
+						            <groupId>org.apache.commons</groupId>
+						            <artifactId>commons-lang3</artifactId>
+						            <version>3.1</version>
+						        </dependency>
+						        <dependency>
+						            <groupId>javax.mail</groupId>
+						            <artifactId>mail</artifactId>
+						            <version>1.4.4</version>
+						        </dependency>
+						        <dependency>
+						        	<groupId>log4j</groupId>
+						        	<artifactId>log4j</artifactId>
+						        	<version>1.2.17</version>
+						        </dependency>
+						        
+
+	
+		
+		
+		
+		<!-- Spring MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<!-- Spring JDBC -->
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency>
+		<!-- Other Web dependencies -->
+		
+		
+	
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Logging with SLF4J & LogBack -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+						        
+    </dependencies>
+						
+					
+		<profiles>
+			<profile>
+	      		<id>dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner2.java</exclude>
+							                   <exclude>**/TestSmokeTestRunExistingUser.java</exclude>					                   
+							                 
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>
+	      
+	      
+	    </profile>
+	   		 <profile>
+	     		 <id>alpha</id>
+											
+						    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>
+							                   	<exclude>**/TestSmokeTestRunner.java</exclude>
+							                   	<exclude>**/TestSmokeTestRunner2.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                                 						                   
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						   </build>
+				</profile>
+				
+				<profile>
+	      		<id>firefox-AT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.firefoxdev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <outputDirectory>${basedir}/target/firefox-AT-dev</outputDirectory>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner2.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                  
+							                   <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**/TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    <profile>
+	      		<id>chrome-AT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.chromedev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                  
+							                 <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>ie-AT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.iedev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                  	<exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>phantomjs-AT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.phantomjsdev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner2.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                  
+							                   <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**/TestRunnerUserSettingPages.java/</exclude>
+						                  
+							                   	</excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>firefox-AT-alpha</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.firefoxalpha.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                   
+							                 <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**/TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>chrome-AT-alpha</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.chromealpha.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                  
+							                 <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>ie-AT-alpha</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.iealpha.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                    <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    <profile>
+	      		<id>phantomjs-AT-alpha</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.phantomjs.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                   
+							                 <exclude>**/TestRunnerAccounts.java</exclude>
+							                   <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                   <exclude>**/TestRunnerHomePage.java</exclude>
+							                   <exclude>**/TestRunnerMedicalRecords.java</exclude>
+							                   <exclude>**/TestRunnerMultiUserShare.java</exclude>
+							                   <exclude>**/TestRunnerPersonalDocument.java</exclude>
+							                   <exclude>**/TestRunnerSummaryPage.java</exclude>
+							                 	<exclude>**TestRunnerUserSettingPages.java/</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    <profile>
+	      		<id>firefox-RT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.firefoxdev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <outputDirectory>${basedir}/target/firefox-RT-dev</outputDirectory>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                   <!-- <exclude>**/TestRunnerAcceptanceTest.java</exclude>  -->                  
+							                 
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    <profile>
+	      		<id>phantomjs-RT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.phantomjsdev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                   						                   
+							                 
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    <profile>
+	      		<id>chrome-RT-dev</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.chromedev.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                   						                   
+							                 
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	     <profile>
+	      		<id>firefox-RT-alpha</id>
+	     			 	    <build>
+						        <defaultGoal>install</defaultGoal>
+						        <plugins>
+						        <plugin>
+						              <groupId>org.apache.maven.plugins</groupId>
+            							<artifactId>maven-antrun-plugin</artifactId>
+           								 <version>1.1</version>
+            							<executions>
+               							<execution>
+                 						 <phase>compile</phase>
+                 							 <goals>
+                     						<goal>run</goal>
+                 							 </goals>
+						                   <configuration>
+						                   <tasks>
+                     						<echo>Using env.test.properties</echo>
+                    	 					<copy file="src/main/resources/env.firefoxalpha.properties" tofile="${project.build.outputDirectory}/env.properties"/>
+                 						 </tasks>
+						                </configuration>
+						            	</execution>
+            							</executions>
+						            </plugin>
+						            <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-compiler-plugin</artifactId>
+						                <configuration>
+						                    <source>1.6</source>
+						                    <target>1.6</target>
+						                   
+						                </configuration>
+						            </plugin>
+						                <plugin>
+						                <groupId>org.apache.maven.plugins</groupId>
+						                <artifactId>maven-surefire-plugin</artifactId>
+						                <!--<version>2.16</version>--> <!-- SHAGUFTA's version-->
+						                <configuration>
+						                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+						                    <excludes>
+							                   	<exclude>**/TestUser.java</exclude>
+							                   	<exclude>**/TestBrowser.java</exclude>
+							                   	<exclude>**/TestEmail.java</exclude>							                   	
+							                   <exclude>**/TestSmokeTestRunner3.java</exclude>
+							                   <exclude>**/TestSmokeTestRunner.java</exclude>
+							                   <exclude>**/TestEnvSetup.java</exclude>
+							                 <exclude>**/TestRunnerAcceptanceTest.java</exclude>
+							                 <exclude>**/TestRunnerAutoEmails.java</exclude>
+							                 <exclude>**/TestRunnerMultiUserShare.java</exclude>
+						                   </excludes>
+						                </configuration>
+						            </plugin>
+						        </plugins>
+						    </build>      
+	      
+	    </profile>
+	    
+	    
+	    
+	</profiles>
+</project>
