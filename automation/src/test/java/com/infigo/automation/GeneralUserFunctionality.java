@@ -1,47 +1,15 @@
 package com.infigo.automation;
 
-import org.apache.bcel.generic.DREM;
-import org.apache.bcel.generic.IFLE;
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.google.common.collect.Table.Cell;
-import com.infigo.automation.Browser;
-import com.infigo.automation.BrowserUtils;
-import com.infigo.automation.Email;
-import com.infigo.automation.EnvSetUP;
-import com.infigo.automation.FileUtils;
-import com.infigo.automation.TestData;
-
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
 
 public class GeneralUserFunctionality {
     @Rule
@@ -53,7 +21,34 @@ public class GeneralUserFunctionality {
     }
 
     private WebDriver driver;
+	TestData testData=new TestData();
 
+	public boolean ifElementPresent(By by)throws Throwable{
+        try {
+            driver.findElement(by);
+            return true;
+        }
+        catch (Throwable t) {
+            return false;
+        
+        }
+    }
+	
+	
+	public void waitForElementToLoadandClick(By by, int counter) throws InterruptedException, Throwable {
+		int timeCounter = 1;
+		boolean timeout = true;
+		do {
+		    Thread.sleep(2000);
+		    timeCounter++;
+		   System.out.println("Page is still loading. The couner is = "+timeCounter);
+		    if (ifElementPresent(by)|| timeCounter > counter) {
+		    	 driver.findElement(by).click();
+		        timeout = false;
+		    }
+		}
+		while (timeout);
+	}
 
      
     
@@ -84,10 +79,10 @@ public void clickMYShoppingBasket()throws Throwable {
 		  driver.findElement(By.cssSelector("form > table.table-container > tbody > tr > td.item-value > #Email")).sendKeys(username);
 		  driver.findElement(By.xpath("(//input[@id='Password'])[2]")).sendKeys(password);
 		  driver.findElement(By.cssSelector("button.loginbutton")).click();
+		  waitForElementToLoadandClick(By.linkText("My Shopping Basket"), 100);
 		  
-		  
-		  
-		  
+		  Thread.sleep(2000);
+			  
 	  }
 
 
@@ -109,8 +104,8 @@ public void browserClose() {
 }
 
 public void searchProduct() throws Throwable{
-	TestData testData=new TestData();
-	
+	String baseurl =EnvSetUP.getInstance().getproperties("baseurl") ;
+	driver.get(baseurl);
 	boolean hasnextrow=true;
 	int rownum=1;
 	while (hasnextrow) {
@@ -135,8 +130,8 @@ public void searchProduct() throws Throwable{
 
 
 public void addtoBasket() throws Throwable{
-	TestData testData=new TestData();
-	
+	String baseurl =EnvSetUP.getInstance().getproperties("baseurl") ;
+	driver.get(baseurl);
 	boolean hasnextrow=true;
 	int rownum=1;
 	while (hasnextrow) {
@@ -144,15 +139,22 @@ public void addtoBasket() throws Throwable{
 	if (!testData.productName(rownum).isEmpty()) {
 		driver.findElement(By.linkText("My Shopping Basket")).click();
 		Thread.sleep(2000);
+		
+		System.out.println(driver.findElement(By.cssSelector(".cf_headerlinks_shoppngcart")).getText());
 	    driver.findElement(By.id("small-searchterms")).clear();
 	    driver.findElement(By.id("small-searchterms")).sendKeys(testData.productName(rownum));
 	    driver.findElement(By.id("btn-small-search")).click();
 	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("input.productlistproductdetailbutton")).click();
-	    driver.findElement(By.name("createDynamic-1724")).click();
-	    driver.findElement(By.xpath("//div[@id='parentContainer']/div[4]/div/div/div[2]/div/button")).click();
-	    driver.findElement(By.xpath("(//button[@type='button'])[4]")).click();
- 
+	    
+	    waitForElementToLoadandClick(By.cssSelector("input.productlistproductdetailbutton"), 100);
+	    	    
+	    waitForElementToLoadandClick(By.cssSelector(".productvariantaddtocartbutton"), 100);	   
+	    
+	    waitForElementToLoadandClick(By.cssSelector(".tt.nextStepButton.btn.btn-success.btn-lg"), 100);
+	  
+	    waitForElementToLoadandClick(By.xpath("html/body/div[7]/div[3]/div/button[1]"), 100);
+	    Thread.sleep(10000);
+	    System.out.println(driver.findElement(By.cssSelector(".cf_headerlinks_shoppngcart")).getText());
 		rownum++;
 	} else {
 		hasnextrow=false;
@@ -160,13 +162,15 @@ public void addtoBasket() throws Throwable{
 		
 	}
 }
+
+
 	public void emailtoBasket() throws Throwable{
-		TestData testData=new TestData();
-		
+		String baseurl =EnvSetUP.getInstance().getproperties("baseurl") ;
+		driver.get(baseurl);
 		boolean hasnextrow=true;
 		int rownum=1;
 		while (hasnextrow) {
-			System.out.println("The row val is :"+testData.productName(rownum));
+			System.out.println("poduct name  :"+testData.productName(rownum));
 		if (!testData.productName(rownum).isEmpty()) {
 			driver.findElement(By.linkText("My Shopping Basket")).click();
 			Thread.sleep(2000);
@@ -177,7 +181,7 @@ public void addtoBasket() throws Throwable{
 		    driver.findElement(By.cssSelector("input.productlistproductdetailbutton")).click();
 		    driver.findElement(By.cssSelector("input.productemailafriendbutton")).click();
 		    driver.findElement(By.id("FriendEmail")).clear();
-		    driver.findElement(By.id("FriendEmail")).sendKeys("heer.qa@gmail.com");
+		    driver.findElement(By.id("FriendEmail")).sendKeys("test@yopmail.com");
 		    driver.findElement(By.id("PersonalMessage")).clear();
 		    driver.findElement(By.id("PersonalMessage")).sendKeys("test");
 		    driver.findElement(By.id("send-email")).click();

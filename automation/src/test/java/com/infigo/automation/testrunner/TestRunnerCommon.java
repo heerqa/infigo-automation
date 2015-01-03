@@ -152,10 +152,10 @@ public abstract class TestRunnerCommon {
         System.out.println("-----> LOGGING IN BEFORE TESTS START");
         BrowserUtils.getInstance().setShouldLogin(true);
         BrowserUtils.getInstance().setShouldBrowserBeClosed(false);
-       // setTestrun(new GeneralUserFunctionality(BrowserUtils.getInstance().getDriver())) ;
+       setTestrun(new GeneralUserFunctionality(BrowserUtils.getInstance().getDriver())) ;
     
-       // getTestrun().testvalidLogin();
-       // BrowserUtils.getInstance().setShouldLogin(false);
+       //getTestrun().testvalidLogin();
+       //BrowserUtils.getInstance().setShouldLogin(true);
         System.out.println("-----> DONE ");
         TestRunnerCommon.setCurrent(0);
         TestRunnerCommon.setPassed(0);
@@ -177,6 +177,7 @@ public abstract class TestRunnerCommon {
         System.out.println("-----> RUNNING  setUpPrecondition()");
 
         try {
+        	
         	getTestrun().clickMYShoppingBasket();
             System.out.println("++++++ PASS");
             

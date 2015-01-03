@@ -26,7 +26,7 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
 	
 	 @BeforeClass    
 	    public static void beforeThisWholeTest() throws Throwable{
-	    	beforeThisWholeTestStartsSingleUserTest("Acceptance Test",4);
+	    	beforeThisWholeTestStartsSingleUserTest("Acceptance Test",3);
 	    
 	    }
 
@@ -39,11 +39,11 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
 	    
 	   @Before
 	    public void setUpPrecondition() throws Throwable{
+		  
 		   super.setUpPrecondition();
 	      }
 
-
-  
+	     
 	@Test
     public void searchProduct() throws Throwable {
 
@@ -60,10 +60,37 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
        
         }
         catch (Throwable e) {
-        	logger.info(i++ +"test is running out of 114");
+        	logger.info(i++ +"test is running out of 4");
         	logger.error("xxxxxx FAIL " + e.getMessage());
             
             getTestrun().getScreenShot("searchProduct");
+            error.addError(e);
+            updateDBFail();
+        }
+        
+    }
+	
+
+	@Test
+    public void addtoBasket() throws Throwable {
+
+       
+        logger.info("-----> RUNNING " + "addtoBasket");
+        dashboard.setRunning_method_name("addtoBasket");
+        updateDBCurrent();
+        
+        try {
+        	getTestrun().addtoBasket();
+            
+            logger.info(i++ +"test is running out of 4");logger.info("++++++ PASS");
+            updateDBPass();
+       
+        }
+        catch (Throwable e) {
+        	logger.info(i++ +"test is running out of 4");
+        	logger.error("xxxxxx FAIL " + e.getMessage());
+            
+            getTestrun().getScreenShot("addtoBasket");
             error.addError(e);
             updateDBFail();
         }
@@ -87,7 +114,7 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
        
         }
         catch (Throwable e) {
-        	logger.info(i++ +"test is running out of 114");
+        	logger.info(i++ +"test is running out of 4");
         	logger.error("xxxxxx FAIL " + e.getMessage());
             
             getTestrun().getScreenShot("emailtoBasket");
