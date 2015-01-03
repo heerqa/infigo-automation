@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Scans within the base package of the application for @Component classes to configure as beans -->
-    <context:component-scan base-package="com.iqabinet.dao" />
+    <context:component-scan base-package="com.infigo.dao" />
 
 
 
@@ -18,8 +18,8 @@
 <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
 </bean> -->
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-<property name="url" value="jdbc:postgresql://ec2-107-20-197-146.compute-1.amazonaws.com:5432/ddp2ls2viuvvof?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
-<property name="username" value="axtwtleokjuebr"/>
-<property name="password" value="8J9LKKTpu1w-XsaFaBgXUiNzDM"/>
+<property name="url" value="jdbc:postgresql://ec2-54-197-241-96.compute-1.amazonaws.com:5432/decp1g4cvmasqt?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+<property name="username" value="igqsutevgfhzvi"/>
+<property name="password" value="U1H15uHRUIjnkMJxr3CYjhh-Cs"/>
 </bean>
 </beans>

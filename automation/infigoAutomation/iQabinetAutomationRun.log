@@ -1,3 +1,9 @@
-02:00:35,132 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@539d2bed: startup date [Wed Dec 10 02:00:35 IST 2014]; root of context hierarchy
-02:00:35,322 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
-02:00:35,851 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
+14:18:45,156 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@556e4ff1: startup date [Sat Jan 03 14:18:45 IST 2015]; root of context hierarchy
+14:18:45,238 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
+14:18:45,480 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
+14:20:11,354 INFO  [TestRunnerAcceptanceTest] -----> RUNNING emailtoBasket
+14:20:56,391 INFO  [TestRunnerAcceptanceTest] 0test is running out of 4
+14:20:56,391 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+14:21:01,358 INFO  [TestRunnerAcceptanceTest] -----> RUNNING searchProduct
+14:21:18,119 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
+14:21:18,120 INFO  [TestRunnerAcceptanceTest] ++++++ PASS

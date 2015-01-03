@@ -1,9 +1,12 @@
 package com.infigo.automation.testrunner;
 
+import java.sql.Driver;
+
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.infigo.automation.Browser;
@@ -149,7 +152,7 @@ public abstract class TestRunnerCommon {
         System.out.println("-----> LOGGING IN BEFORE TESTS START");
         BrowserUtils.getInstance().setShouldLogin(true);
         BrowserUtils.getInstance().setShouldBrowserBeClosed(false);
-        setTestrun(new GeneralUserFunctionality(BrowserUtils.getInstance().getDriver())) ;
+       // setTestrun(new GeneralUserFunctionality(BrowserUtils.getInstance().getDriver())) ;
     
        // getTestrun().testvalidLogin();
        // BrowserUtils.getInstance().setShouldLogin(false);
@@ -159,19 +162,22 @@ public abstract class TestRunnerCommon {
         TestRunnerCommon.setFailed(0);
     }
 
-
-   
+    
     public static void afterThisWholeTestEnds() throws Throwable {
         BrowserUtils.getInstance().setShouldBrowserBeClosed(true);
         getTestrun().browserClose();
     }
     
+    public void afterTestRun() throws Throwable {
+    	BrowserUtils.getInstance().setShouldBrowserBeClosed(true);
+    	getTestrun().browserClose();
+    }
     
     public void setUpPrecondition() throws Throwable {
         System.out.println("-----> RUNNING  setUpPrecondition()");
 
         try {
-        	getTestrun().clickPersonalDocument();
+        	getTestrun().clickMYShoppingBasket();
             System.out.println("++++++ PASS");
             
         }

@@ -2,9 +2,12 @@ package com.infigo.automation.testrunner;
 
 
 import org.apache.log4j.Logger;
+import org.hibernate.metamodel.domain.Superclass;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -23,34 +26,36 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
 	
 	 @BeforeClass    
 	    public static void beforeThisWholeTest() throws Throwable{
-	    	beforeThisWholeTestStartsSingleUserTest("Acceptance Test",112);
+	    	beforeThisWholeTestStartsSingleUserTest("Acceptance Test",4);
 	    
 	    }
 
-
-	    @AfterClass
-	    public static void afterThisWholeTestEnds() throws Throwable {
-	    	afterThisWholeTestEnds();
-	     }
+	 	
+	   @AfterClass
+	    public static void afterAllTest() throws Throwable {
+		   afterThisWholeTestEnds();
+		   
+	   }
 	    
-	    @Before
+	   @Before
 	    public void setUpPrecondition() throws Throwable{
-	    	super.setUpPrecondition();
+		   super.setUpPrecondition();
 	      }
 
 
   
-	   @Test
-    public void testExpandCollapseCard() throws Throwable {
+	@Test
+    public void searchProduct() throws Throwable {
 
        
-        logger.info("-----> RUNNING " + getMethodName());
-        dashboard.setRunning_method_name(getMethodName());updateDBCurrent();
+        logger.info("-----> RUNNING " + "searchProduct");
+        dashboard.setRunning_method_name("searchProduct");
+        updateDBCurrent();
         
         try {
-        	getTestrun().testExpandCollapseCard();
+        	getTestrun().searchProduct();
             
-            logger.info(i++ +"test is running out of 114");logger.info("++++++ PASS");
+            logger.info(i++ +"test is running out of 4");logger.info("++++++ PASS");
             updateDBPass();
        
         }
@@ -58,12 +63,40 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
         	logger.info(i++ +"test is running out of 114");
         	logger.error("xxxxxx FAIL " + e.getMessage());
             
-            getTestrun().getScreenShot("abtestExpandCollapseCard");
+            getTestrun().getScreenShot("searchProduct");
             error.addError(e);
             updateDBFail();
         }
-        getTestrun().browserClose();
+        
     }
     
-     
+	
+	@Test
+    public void emailtoBasket() throws Throwable {
+
+       
+        logger.info("-----> RUNNING " + "emailtoBasket");
+        dashboard.setRunning_method_name("emailtoBasket");
+        updateDBCurrent();
+        
+        try {
+        	getTestrun().emailtoBasket();
+            
+            logger.info(i++ +"test is running out of 4");logger.info("++++++ PASS");
+            updateDBPass();
+       
+        }
+        catch (Throwable e) {
+        	logger.info(i++ +"test is running out of 114");
+        	logger.error("xxxxxx FAIL " + e.getMessage());
+            
+            getTestrun().getScreenShot("emailtoBasket");
+            error.addError(e);
+            updateDBFail();
+        }
+        
+    }
+    
+	 
+	      
 }
