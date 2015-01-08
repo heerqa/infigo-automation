@@ -144,6 +144,26 @@ public abstract class TestRunnerCommon {
         TestRunnerCommon.setFailed(0);
     }
     
+    
+    public static void beforeThisWholeTestStartsSingleUserTest_CatFish(String testsuitename, int totaltest) throws Throwable {
+        setupDriver();
+        dashboard.setTestclassname(testsuitename);
+        dashboard.setTotaltests(totaltest);
+        dashboardDaoImpl.insertDashbaord(dashboard);
+        System.out.println("-----> LOGGING IN BEFORE TESTS START");
+        BrowserUtils.getInstance().setShouldLogin(true);
+        BrowserUtils.getInstance().setShouldBrowserBeClosed(false);
+        setTestrun(new GeneralUserFunctionality(BrowserUtils.getInstance().getDriver())) ;
+    
+        getTestrun().testvalidLogintoCatFish();
+        BrowserUtils.getInstance().setShouldLogin(false);
+        System.out.println("-----> DONE ");
+        TestRunnerCommon.setCurrent(0);
+        TestRunnerCommon.setPassed(0);
+        TestRunnerCommon.setFailed(0);
+    }
+    
+    
     public static void beforeThisWholeTestStartsMultiUserTest(String testsuitename, int totaltest) throws Throwable {
         setupDriver();
         dashboard.setTestclassname(testsuitename);
@@ -179,6 +199,23 @@ public abstract class TestRunnerCommon {
         try {
         	
         	getTestrun().clickMYShoppingBasket();
+            System.out.println("++++++ PASS");
+            
+        }
+        catch (Throwable e) {
+            System.out.println("xxxxxx FAIL " + e.getMessage());
+            getTestrun().getScreenShot("setUpPrecondition");
+            //error.addError(e);
+        }
+
+     }
+    
+    public void setUpPrecondition_catFish() throws Throwable {
+        System.out.println("-----> RUNNING  setUpPrecondition()");
+
+        try {
+        	
+        	getTestrun().clickonHomeLink();
             System.out.println("++++++ PASS");
             
         }

@@ -107,7 +107,7 @@ public class TestRunnerAcceptanceTest extends TestRunnerCommon {
         updateDBCurrent();
         
         try {
-        	getTestrun().emailtoBasket();
+        	getTestrun().emailtoFriend();
             
             logger.info(i++ +"test is running out of 4");logger.info("++++++ PASS");
             updateDBPass();
