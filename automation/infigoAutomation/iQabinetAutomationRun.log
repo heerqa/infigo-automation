@@ -1,9 +1,12 @@
-14:18:45,156 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@556e4ff1: startup date [Sat Jan 03 14:18:45 IST 2015]; root of context hierarchy
-14:18:45,238 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
-14:18:45,480 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
-14:20:11,354 INFO  [TestRunnerAcceptanceTest] -----> RUNNING emailtoBasket
-14:20:56,391 INFO  [TestRunnerAcceptanceTest] 0test is running out of 4
-14:20:56,391 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
-14:21:01,358 INFO  [TestRunnerAcceptanceTest] -----> RUNNING searchProduct
-14:21:18,119 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
-14:21:18,120 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+12:46:55,734 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@10b090ac: startup date [Thu Jan 08 12:46:55 IST 2015]; root of context hierarchy
+12:46:55,897 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
+12:46:56,471 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
+12:47:37,977 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_FitnessFlyer
+12:48:14,079 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
+12:48:14,079 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+12:48:20,709 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_Card_Fitness_Plus
+12:48:48,376 INFO  [TestRunnerAcceptanceTest] 2test is running out of 4
+12:48:48,376 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+12:48:51,138 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addMemberShipLetter_with_csvupload
+12:49:28,891 INFO  [TestRunnerAcceptanceTest] 3test is running out of 4
+12:49:28,892 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
