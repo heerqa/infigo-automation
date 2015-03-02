@@ -189,6 +189,7 @@
 		<profiles>
 			<profile>
 	      		<id>dev</id>
+	      		
 	     			 	    <build>
 						        <defaultGoal>install</defaultGoal>
 						        <plugins>
@@ -261,6 +262,7 @@
 				
 				<profile>
 	      		<id>firefox-AT-dev</id>
+	      					
 	     			 	    <build>
 						        <defaultGoal>install</defaultGoal>
 						        <plugins>
