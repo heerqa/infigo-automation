@@ -1,12 +1,38 @@
-12:46:55,734 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@10b090ac: startup date [Thu Jan 08 12:46:55 IST 2015]; root of context hierarchy
-12:46:55,897 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
-12:46:56,471 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
-12:47:37,977 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_FitnessFlyer
-12:48:14,079 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
-12:48:14,079 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
-12:48:20,709 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_Card_Fitness_Plus
-12:48:48,376 INFO  [TestRunnerAcceptanceTest] 2test is running out of 4
-12:48:48,376 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
-12:48:51,138 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addMemberShipLetter_with_csvupload
-12:49:28,891 INFO  [TestRunnerAcceptanceTest] 3test is running out of 4
-12:49:28,892 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+21:47:12,954 INFO  [ClassPathXmlApplicationContext] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@615e796d: startup date [Sun Feb 22 21:47:12 IST 2015]; root of context hierarchy
+21:47:13,032 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/application-config.xml]
+21:47:13,617 INFO  [XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource-config.xml]
+21:48:49,406 INFO  [TestRunnerAcceptanceTest] -----> RUNNING emailtoBasket
+21:51:14,354 INFO  [TestRunnerAcceptanceTest] 0test is running out of 4
+21:51:14,354 ERROR [TestRunnerAcceptanceTest] xxxxxx FAIL null
+21:51:18,816 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addtoBasket
+21:54:37,660 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
+21:54:37,667 ERROR [TestRunnerAcceptanceTest] xxxxxx FAIL Unable to locate element: {"method":"xpath","selector":"html/body/div[7]/div[3]/div/button[1]"}
+Command duration or timeout: 10.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.43.1', revision: '5163bceef1bc36d43f3dc0b83c88998168a363a0', time: '2014-09-10 09:43:55'
+System info: host: 'HEER-PC', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: 5a4ef92b-9805-4306-8300-7a2acb039223
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, webStorageEnabled=true, nativeEvents=false, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=35.0.1}]
+21:55:01,800 INFO  [TestRunnerAcceptanceTest] -----> RUNNING searchProduct
+21:56:45,861 INFO  [TestRunnerAcceptanceTest] 2test is running out of 4
+21:56:45,861 ERROR [TestRunnerAcceptanceTest] xxxxxx FAIL null
+21:57:23,842 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_FitnessFlyer
+21:58:19,037 INFO  [TestRunnerAcceptanceTest] 1test is running out of 4
+21:58:19,038 INFO  [TestRunnerAcceptanceTest] ++++++ PASS
+21:58:24,531 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addBusiness_Card_Fitness_Plus
+21:58:44,391 INFO  [TestRunnerAcceptanceTest] 2test is running out of 4
+21:58:44,414 ERROR [TestRunnerAcceptanceTest] xxxxxx FAIL Unable to locate element: {"method":"css selector","selector":"input.productlistproductdetailbutton"}
+Command duration or timeout: 10.08 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.43.1', revision: '5163bceef1bc36d43f3dc0b83c88998168a363a0', time: '2014-09-10 09:43:55'
+System info: host: 'HEER-PC', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: 62fb9f9b-bbb4-4bad-a485-a5954c54ac6a
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=WINDOWS, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, webStorageEnabled=true, nativeEvents=false, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=35.0.1}]
+21:58:47,337 INFO  [TestRunnerAcceptanceTest] -----> RUNNING addMemberShipLetter_with_csvupload
+21:59:06,251 INFO  [TestRunnerAcceptanceTest] 3test is running out of 4
+21:59:06,256 ERROR [TestRunnerAcceptanceTest] xxxxxx FAIL Error communicating with the remote browser. It may have died.
+Build info: version: '2.43.1', revision: '5163bceef1bc36d43f3dc0b83c88998168a363a0', time: '2014-09-10 09:43:55'
+System info: host: 'HEER-PC', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_25'
+Driver info: driver.version: RemoteWebDriver
